@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weather & Seasons — Full Quiz App</title>
+
+<style>
+  body{margin:0;font-family:"Kanit",sans-serif;background:#f4f6ff;color:#222}
+  header{background:#6a76ff;padding:20px;color:white;text-align:center;font-size:26px;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.12)}
+  .top-menu{display:flex;justify-content:center;gap:10px;background:#eef1ff;padding:12px;position:sticky;top:0;z-index:1000;border-bottom:2px solid #dce1ff}
+  .menu-btn{padding:10px 20px;border-radius:50px;border:2px solid #6a76ff;background:white;cursor:pointer;font-size:16px;font-weight:600;transition:.2s}
+  .menu-btn:hover{background:#dfe4ff}
+  .menu-btn.active{background:#6a76ff;color:white}
+  .container{max-width:980px;margin:auto;padding:20px}
+  .card{background:white;padding:18px;border-radius:16px;margin-bottom:20px;box-shadow:0 6px 16px rgba(0,0,0,0.08)}
+  .title{font-size:20px;font-weight:700;color:#3949ab;margin-bottom:8px}
+  .sub{color:#666;margin-bottom:12px}
+  .list-word{background:#eef1ff;padding:12px;border-radius:10px;line-height:1.7}
+  .conversation{background:#eef2ff;padding:12px;border-radius:10px;margin-bottom:12px;line-height:1.6}
+  .question{font-weight:700;margin-top:8px;margin-bottom:6px}
+  .choice-radio{display:block;padding:10px;border-radius:10px;border:1px solid #ccc;background:white;margin-bottom:8px;cursor:pointer}
+  .choice-radio input{margin-right:8px}
+  .submit-btn{margin-top:8px;padding:10px 18px;background:#6a76ff;color:white;border:none;border-radius:25px;font-weight:700;cursor:pointer}
+  .submit-btn:hover{background:#525ee0}
+  .result-box{margin-top:10px;font-weight:700}
+  .correct{color:green}
+  .wrong{color:red}
+  .small-note{font-size:13px;color:#666;margin-top:6px}
+</style>
+</head>
+<body>
+
+<header>🌤 Weather & Seasons — Vocabulary + 30 Conversations Quiz</header>
+
+<nav class="top-menu">
+  <button class="menu-btn active" onclick="showTab('lesson', this)">📘 LESSON</button>
+  <button class="menu-btn" onclick="showTab('quiz', this)">📝 QUIZ</button>
+</nav>
+
+<div class="container">
+
+  <!-- LESSON -->
+  <section id="lesson">
+    <div class="card">
+      <div class="title">🌸 SPRING — ฤดูใบไม้ผลิ</div>
+      <div class="sub">อากาศอบอุ่น ดอกไม้บาน ลมพัดเบา ๆ</div>
+      <div class="list-word">
+        warm = อบอุ่น<br>
+        sunny = แดดจ้า<br>
+        breezy = ลมพัดเบา ๆ<br>
+        clear sky = ท้องฟ้าแจ่มใส<br>
+        mild = สบาย ๆ<br>
+        light rain = ฝนตกเบา ๆ
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">☀️ SUMMER — ฤดูร้อน</div>
+      <div class="sub">อากาศร้อน แดดแรง ท้องฟ้าเปิด</div>
+      <div class="list-word">
+        hot = ร้อน<br>
+        boiling = ร้อนมาก<br>
+        bright sun = แดดแรง<br>
+        humid = อากาศชื้น<br>
+        dry = แห้งแล้ง<br>
+        heatwave = คลื่นความร้อน
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">🍁 AUTUMN — ฤดูใบไม้ร่วง</div>
+      <div class="sub">อากาศเย็นสบาย ใบไม้เปลี่ยนสี ลมแรงเล็กน้อย</div>
+      <div class="list-word">
+        cool = เย็นสบาย<br>
+        windy = ลมแรง<br>
+        dry leaves = ใบไม้แห้ง<br>
+        gentle breeze = ลมอ่อน<br>
+        falling leaves = ใบไม้ร่วง
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">❄️ WINTER — ฤดูหนาว</div>
+      <div class="sub">อากาศหนาวจัด เมฆมาก หมอกลง</div>
+      <div class="list-word">
+        cold = หนาว<br>
+        freezing = หนาวจัด<br>
+        cloudy = เมฆมาก<br>
+        foggy = หมอกลง<br>
+        icy = น้ำแข็งจับ<br>
+        snowing = หิมะตก
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">🌧 RAINY WEATHER — สภาพอากาศฝนตก</div>
+      <div class="list-word">
+        rainy = ฝนตก<br>
+        heavy rain = ฝนตกหนัก<br>
+        thunder = ฟ้าร้อง<br>
+        lightning = ฟ้าแลบ<br>
+        wet = เปียก<br>
+        slippery = ลื่น
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">🌬 WINDY WEATHER — ลมแรง</div>
+      <div class="list-word">
+        windy = ลมแรง<br>
+        stormy = พายุเข้า<br>
+        strong wind = ลมแรงมาก<br>
+        gentle wind = ลมอ่อน
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">🌫 FOGGY WEATHER — หมอก</div>
+      <div class="list-word">
+        foggy = หมอกลง<br>
+        low visibility = มองเห็นได้น้อย<br>
+        misty = หมอกจาง ๆ
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">☁️ CLOUDY WEATHER — ท้องฟ้ามีเมฆ</div>
+      <div class="list-word">
+        cloudy = มีเมฆ<br>
+        overcast = เมฆครึ้มทั้งวัน<br>
+        gray sky = ท้องฟ้าสีเทา
+      </div>
+    </div>
+
+    <div class="small-note">เลื่อนลงไปที่แท็บ <b>QUIZ</b> เพื่อทำแบบฝึกหัด — แต่ละบทมี 3 ข้อ ให้เลือกแล้วกด SUBMIT ก่อนดูคำตอบ</div>
+  </section>
+  <!-- /LESSON -->
+
+  <!-- QUIZ -->
+  <section id="quiz" style="display:none;">
+
+  <!-- We'll render 30 conversation cards. Each card has 3 radio question groups and a SUBMIT button. -->
+  <!-- For clarity: radio name format q{n}_1 / q{n}_2 / q{n}_3  (n = 1..30) -->
+
+  <!-- CONVERSATION 1 -->
+  <div class="card" id="card-1">
+    <div class="title">🌸 Conversation 1 — Spring</div>
+    <div class="conversation">
+A: Spring is here now. The weather is usually ___(1)___.<br>
+B: Yes! Today the sky is clear and sunny.<br>
+A: Flowers start blooming everywhere.<br>
+B: I usually walk in the park in spring.<br>
+A: The wind is soft and ___(2)___.<br>
+B: That sounds nice. What do you do on weekends?<br>
+A: I usually ___(3)___ with my family.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q1_1" value="a"> a) warm</label>
+    <label class="choice-radio"><input type="radio" name="q1_1" value="b"> b) freezing</label>
+    <label class="choice-radio"><input type="radio" name="q1_1" value="c"> c) stormy</label>
+    <label class="choice-radio"><input type="radio" name="q1_1" value="d"> d) foggy</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q1_2" value="a"> a) breezy</label>
+    <label class="choice-radio"><input type="radio" name="q1_2" value="b"> b) dark</label>
+    <label class="choice-radio"><input type="radio" name="q1_2" value="c"> c) noisy</label>
+    <label class="choice-radio"><input type="radio" name="q1_2" value="d"> d) dry</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q1_3" value="a"> a) walk</label>
+    <label class="choice-radio"><input type="radio" name="q1_3" value="b"> b) jump</label>
+    <label class="choice-radio"><input type="radio" name="q1_3" value="c"> c) fly</label>
+    <label class="choice-radio"><input type="radio" name="q1_3" value="d"> d) sleep outside</label>
+
+    <button class="submit-btn" onclick="submitConversation(1)">SUBMIT</button>
+    <div id="result-1" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 2 -->
+  <div class="card" id="card-2">
+    <div class="title">☀️ Conversation 2 — Summer</div>
+    <div class="conversation">
+A: Summer is very hot here. The sun is always ___(1)___.<br>
+B: Yes, the sky is clear with no clouds.<br>
+A: What do you usually drink on hot days?<br>
+B: I usually drink cold water.<br>
+A: I drink juice. It makes me feel ___(2)___.<br>
+B: Do you go outside much?<br>
+A: No, I usually ___(3)___ at home.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q2_1" value="a"> a) bright</label>
+    <label class="choice-radio"><input type="radio" name="q2_1" value="b"> b) cold</label>
+    <label class="choice-radio"><input type="radio" name="q2_1" value="c"> c) gray</label>
+    <label class="choice-radio"><input type="radio" name="q2_1" value="d"> d) quiet</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q2_2" value="a"> a) fresh</label>
+    <label class="choice-radio"><input type="radio" name="q2_2" value="b"> b) angry</label>
+    <label class="choice-radio"><input type="radio" name="q2_2" value="c"> c) slow</label>
+    <label class="choice-radio"><input type="radio" name="q2_2" value="d"> d) lost</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q2_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q2_3" value="b"> b) fly</label>
+    <label class="choice-radio"><input type="radio" name="q2_3" value="c"> c) scream</label>
+    <label class="choice-radio"><input type="radio" name="q2_3" value="d"> d) cook grass</label>
+
+    <button class="submit-btn" onclick="submitConversation(2)">SUBMIT</button>
+    <div id="result-2" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 3 -->
+  <div class="card" id="card-3">
+    <div class="title">🌧 Conversation 3 — Rainy Season</div>
+    <div class="conversation">
+A: It has been raining for two days. The streets are ___(1)___.<br>
+B: Yes, the sky is dark and cloudy.<br>
+A: I always bring my umbrella.<br>
+B: Good idea. The weather is usually ___(2)___.<br>
+A: Do you like rainy days?<br>
+B: Not much. I usually ___(3)___ at home.<br>
+A: Same here.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q3_1" value="a"> a) dry</label>
+    <label class="choice-radio"><input type="radio" name="q3_1" value="b"> b) empty</label>
+    <label class="choice-radio"><input type="radio" name="q3_1" value="c"> c) wet</label>
+    <label class="choice-radio"><input type="radio" name="q3_1" value="d"> d) sunny</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q3_2" value="a"> a) sweet</label>
+    <label class="choice-radio"><input type="radio" name="q3_2" value="b"> b) cool</label>
+    <label class="choice-radio"><input type="radio" name="q3_2" value="c"> c) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q3_2" value="d"> d) hot</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q3_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q3_3" value="b"> b) fly</label>
+    <label class="choice-radio"><input type="radio" name="q3_3" value="c"> c) walk far</label>
+    <label class="choice-radio"><input type="radio" name="q3_3" value="d"> d) swim outside</label>
+
+    <button class="submit-btn" onclick="submitConversation(3)">SUBMIT</button>
+    <div id="result-3" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 4 -->
+  <div class="card" id="card-4">
+    <div class="title">🍁 Conversation 4 — Autumn</div>
+    <div class="conversation">
+A: Autumn is here. The leaves are turning ___(1)___.<br>
+B: Yes, the weather is cool and calm.<br>
+A: My town gets windy in autumn.<br>
+B: Mine too. The wind is usually ___(2)___.<br>
+A: Do you go out often?<br>
+B: Yes, I walk every afternoon.<br>
+A: Sometimes I ___(3)___ with my family.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q4_1" value="a"> a) red</label>
+    <label class="choice-radio"><input type="radio" name="q4_1" value="b"> b) blue</label>
+    <label class="choice-radio"><input type="radio" name="q4_1" value="c"> c) black</label>
+    <label class="choice-radio"><input type="radio" name="q4_1" value="d"> d) purple</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q4_2" value="a"> a) soft</label>
+    <label class="choice-radio"><input type="radio" name="q4_2" value="b"> b) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q4_2" value="c"> c) hot</label>
+    <label class="choice-radio"><input type="radio" name="q4_2" value="d"> d) noisy</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q4_3" value="a"> a) walk</label>
+    <label class="choice-radio"><input type="radio" name="q4_3" value="b"> b) jump on trees</label>
+    <label class="choice-radio"><input type="radio" name="q4_3" value="c"> c) scream</label>
+    <label class="choice-radio"><input type="radio" name="q4_3" value="d"> d) drive trucks</label>
+
+    <button class="submit-btn" onclick="submitConversation(4)">SUBMIT</button>
+    <div id="result-4" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 5 -->
+  <div class="card" id="card-5">
+    <div class="title">❄️ Conversation 5 — Winter</div>
+    <div class="conversation">
+A: Winter mornings are very ___(1)___.<br>
+B: Yes, sometimes it is only 8°C.<br>
+A: The sky is cloudy today.<br>
+B: At night it gets freezing.<br>
+A: What do you drink in winter?<br>
+B: I drink hot chocolate. It makes me feel ___(2)___.<br>
+A: I usually ___(3)___ at home.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q5_1" value="a"> a) cold</label>
+    <label class="choice-radio"><input type="radio" name="q5_1" value="b"> b) hot</label>
+    <label class="choice-radio"><input type="radio" name="q5_1" value="c"> c) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q5_1" value="d"> d) dry</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q5_2" value="a"> a) warm</label>
+    <label class="choice-radio"><input type="radio" name="q5_2" value="b"> b) angry</label>
+    <label class="choice-radio"><input type="radio" name="q5_2" value="c"> c) bored</label>
+    <label class="choice-radio"><input type="radio" name="q5_2" value="d"> d) noisy</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q5_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q5_3" value="b"> b) fly</label>
+    <label class="choice-radio"><input type="radio" name="q5_3" value="c"> c) melt</label>
+    <label class="choice-radio"><input type="radio" name="q5_3" value="d"> d) blow wind</label>
+
+    <button class="submit-btn" onclick="submitConversation(5)">SUBMIT</button>
+    <div id="result-5" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 6 -->
+  <div class="card" id="card-6">
+    <div class="title">☁️ Conversation 6 — Cloudy Day</div>
+    <div class="conversation">
+A: Today is very cloudy. The sky is completely ___(1)___.<br>
+B: Yes, I don’t see the sun.<br>
+A: Do you think it will rain?<br>
+B: Maybe. It rains when clouds are dark.<br>
+A: What do you do on cloudy days?<br>
+B: I usually ___(2)___ at home.<br>
+A: Sounds nice.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q6_1" value="a"> a) blue</label>
+    <label class="choice-radio"><input type="radio" name="q6_1" value="b"> b) gray</label>
+    <label class="choice-radio"><input type="radio" name="q6_1" value="c"> c) pink</label>
+    <label class="choice-radio"><input type="radio" name="q6_1" value="d"> d) clear</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q6_2" value="a"> a) read</label>
+    <label class="choice-radio"><input type="radio" name="q6_2" value="b"> b) fly</label>
+    <label class="choice-radio"><input type="radio" name="q6_2" value="c"> c) scream</label>
+    <label class="choice-radio"><input type="radio" name="q6_2" value="d"> d) jump</label>
+
+    <button class="submit-btn" onclick="submitConversation(6)">SUBMIT</button>
+    <div id="result-6" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 7 -->
+  <div class="card" id="card-7">
+    <div class="title">🌬 Conversation 7 — Windy Day</div>
+    <div class="conversation">
+A: It’s very windy today. The trees are ___(1)___.<br>
+B: Yes, the wind is strong.<br>
+A: Do you like windy days?<br>
+B: Not really. My hair gets ___(2)___.<br>
+A: Same! What do you do on windy days?<br>
+B: I usually ___(3)___ inside.<br>
+A: Good idea.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q7_1" value="a"> a) dancing</label>
+    <label class="choice-radio"><input type="radio" name="q7_1" value="b"> b) eating</label>
+    <label class="choice-radio"><input type="radio" name="q7_1" value="c"> c) crying</label>
+    <label class="choice-radio"><input type="radio" name="q7_1" value="d"> d) burning</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q7_2" value="a"> a) dirty</label>
+    <label class="choice-radio"><input type="radio" name="q7_2" value="b"> b) messy</label>
+    <label class="choice-radio"><input type="radio" name="q7_2" value="c"> c) purple</label>
+    <label class="choice-radio"><input type="radio" name="q7_2" value="d"> d) straight</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q7_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q7_3" value="b"> b) fly</label>
+    <label class="choice-radio"><input type="radio" name="q7_3" value="c"> c) fall</label>
+    <label class="choice-radio"><input type="radio" name="q7_3" value="d"> d) drive</label>
+
+    <button class="submit-btn" onclick="submitConversation(7)">SUBMIT</button>
+    <div id="result-7" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 8 -->
+  <div class="card" id="card-8">
+    <div class="title">🌫 Conversation 8 — Foggy Morning</div>
+    <div class="conversation">
+A: This morning is very foggy. I can’t ___(1)___ clearly.<br>
+B: Yes, everything looks white.<br>
+A: Do you walk to school in foggy weather?<br>
+B: No, it's not safe.<br>
+A: The road is too ___(2)___.<br>
+B: True. What do you do on foggy mornings?<br>
+A: I usually ___(3)___ the weather.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q8_1" value="a"> a) see</label>
+    <label class="choice-radio"><input type="radio" name="q8_1" value="b"> b) sleep</label>
+    <label class="choice-radio"><input type="radio" name="q8_1" value="c"> c) eat</label>
+    <label class="choice-radio"><input type="radio" name="q8_1" value="d"> d) touch</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q8_2" value="a"> a) dangerous</label>
+    <label class="choice-radio"><input type="radio" name="q8_2" value="b"> b) empty</label>
+    <label class="choice-radio"><input type="radio" name="q8_2" value="c"> c) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q8_2" value="d"> d) dry</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q8_3" value="a"> a) check</label>
+    <label class="choice-radio"><input type="radio" name="q8_3" value="b"> b) jump</label>
+    <label class="choice-radio"><input type="radio" name="q8_3" value="c"> c) forget</label>
+    <label class="choice-radio"><input type="radio" name="q8_3" value="d"> d) run</label>
+
+    <button class="submit-btn" onclick="submitConversation(8)">SUBMIT</button>
+    <div id="result-8" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 9 -->
+  <div class="card" id="card-9">
+    <div class="title">🔥 Conversation 9 — Hot Day</div>
+    <div class="conversation">
+A: Today is extremely hot. I’m sweating so ___(1)___.<br>
+B: Same here. The sun is really bright.<br>
+A: What do you drink on hot days?<br>
+B: I drink cold water.<br>
+A: I drink juice. It makes me feel ___(2)___.<br>
+B: Good choice.<br>
+A: I usually ___(3)___ at home when it’s too hot.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q9_1" value="a"> a) much</label>
+    <label class="choice-radio"><input type="radio" name="q9_1" value="b"> b) little</label>
+    <label class="choice-radio"><input type="radio" name="q9_1" value="c"> c) slow</label>
+    <label class="choice-radio"><input type="radio" name="q9_1" value="d"> d) cold</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q9_2" value="a"> a) fresh</label>
+    <label class="choice-radio"><input type="radio" name="q9_2" value="b"> b) sleepy</label>
+    <label class="choice-radio"><input type="radio" name="q9_2" value="c"> c) angry</label>
+    <label class="choice-radio"><input type="radio" name="q9_2" value="d"> d) lost</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q9_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q9_3" value="b"> b) explode</label>
+    <label class="choice-radio"><input type="radio" name="q9_3" value="c"> c) run far</label>
+    <label class="choice-radio"><input type="radio" name="q9_3" value="d"> d) cook</label>
+
+    <button class="submit-btn" onclick="submitConversation(9)">SUBMIT</button>
+    <div id="result-9" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 10 -->
+  <div class="card" id="card-10">
+    <div class="title">⛈ Conversation 10 — Stormy Weather</div>
+    <div class="conversation">
+A: It's stormy today. The wind is very ___(1)___.<br>
+B: Yes, and the rain is heavy.<br>
+A: Do you go outside in storms?<br>
+B: Never, it’s dangerous.<br>
+A: What do you do instead?<br>
+B: I stay home and ___(2)___.<br>
+A: I ___(3)___ too.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q10_1" value="a"> a) strong</label>
+    <label class="choice-radio"><input type="radio" name="q10_1" value="b"> b) quiet</label>
+    <label class="choice-radio"><input type="radio" name="q10_1" value="c"> c) slow</label>
+    <label class="choice-radio"><input type="radio" name="q10_1" value="d"> d) warm</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q10_2" value="a"> a) read</label>
+    <label class="choice-radio"><input type="radio" name="q10_2" value="b"> b) swim outside</label>
+    <label class="choice-radio"><input type="radio" name="q10_2" value="c"> c) shout</label>
+    <label class="choice-radio"><input type="radio" name="q10_2" value="d"> d) drive fast</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q10_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q10_3" value="b"> b) jump</label>
+    <label class="choice-radio"><input type="radio" name="q10_3" value="c"> c) melt</label>
+    <label class="choice-radio"><input type="radio" name="q10_3" value="d"> d) blow</label>
+
+    <button class="submit-btn" onclick="submitConversation(10)">SUBMIT</button>
+    <div id="result-10" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 11 -->
+  <div class="card" id="card-11">
+    <div class="title">🌤 Conversation 11 — Mild Weather</div>
+    <div class="conversation">
+A: Today the weather is very mild. It’s not too ___(1)___.<br>
+B: Yes, it feels comfortable.<br>
+A: Do you like mild days?<br>
+B: Yes, I usually walk outside.<br>
+A: I sometimes ___(2)___ my dog in the evening.<br>
+B: That sounds fun.<br>
+A: Mild weather makes everyone feel ___(3)___.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q11_1" value="a"> a) hot</label>
+    <label class="choice-radio"><input type="radio" name="q11_1" value="b"> b) sharp</label>
+    <label class="choice-radio"><input type="radio" name="q11_1" value="c"> c) sweet</label>
+    <label class="choice-radio"><input type="radio" name="q11_1" value="d"> d) delicious</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q11_2" value="a"> a) walk</label>
+    <label class="choice-radio"><input type="radio" name="q11_2" value="b"> b) throw</label>
+    <label class="choice-radio"><input type="radio" name="q11_2" value="c"> c) break</label>
+    <label class="choice-radio"><input type="radio" name="q11_2" value="d"> d) hide</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q11_3" value="a"> a) relaxed</label>
+    <label class="choice-radio"><input type="radio" name="q11_3" value="b"> b) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q11_3" value="c"> c) melting</label>
+    <label class="choice-radio"><input type="radio" name="q11_3" value="d"> d) loud</label>
+
+    <button class="submit-btn" onclick="submitConversation(11)">SUBMIT</button>
+    <div id="result-11" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 12 -->
+  <div class="card" id="card-12">
+    <div class="title">🌦 Conversation 12 — Light Rain</div>
+    <div class="conversation">
+A: It’s only light rain today. The weather is still ___(1)___.<br>
+B: Yes, it’s not too wet.<br>
+A: Do you walk in light rain?<br>
+B: Sometimes, when I ___(2)___ an umbrella.<br>
+A: I think light rain feels relaxing.<br>
+B: True. I usually listen to music.<br>
+A: That helps me feel ___(3)___ too.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q12_1" value="a"> a) cool</label>
+    <label class="choice-radio"><input type="radio" name="q12_1" value="b"> b) boiling</label>
+    <label class="choice-radio"><input type="radio" name="q12_1" value="c"> c) angry</label>
+    <label class="choice-radio"><input type="radio" name="q12_1" value="d"> d) spicy</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q12_2" value="a"> a) bring</label>
+    <label class="choice-radio"><input type="radio" name="q12_2" value="b"> b) drop</label>
+    <label class="choice-radio"><input type="radio" name="q12_2" value="c"> c) kick</label>
+    <label class="choice-radio"><input type="radio" name="q12_2" value="d"> d) bite</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q12_3" value="a"> a) calm</label>
+    <label class="choice-radio"><input type="radio" name="q12_3" value="b"> b) angry</label>
+    <label class="choice-radio"><input type="radio" name="q12_3" value="c"> c) hard</label>
+    <label class="choice-radio"><input type="radio" name="q12_3" value="d"> d) purple</label>
+
+    <button class="submit-btn" onclick="submitConversation(12)">SUBMIT</button>
+    <div id="result-12" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 13 -->
+  <div class="card" id="card-13">
+    <div class="title">🔥 Conversation 13 — Hot & Dry</div>
+    <div class="conversation">
+A: Today is very dry. There is no rain and the air is ___(1)___.<br>
+B: Yes, my skin feels dry too.<br>
+A: Do you like dry weather?<br>
+B: Not really. I usually drink more water.<br>
+A: That helps me feel ___(2)___.<br>
+B: Same. What do you do on dry days?<br>
+A: I usually ___(3)___ at home.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q13_1" value="a"> a) hot</label>
+    <label class="choice-radio"><input type="radio" name="q13_1" value="b"> b) wet</label>
+    <label class="choice-radio"><input type="radio" name="q13_1" value="c"> c) icy</label>
+    <label class="choice-radio"><input type="radio" name="q13_1" value="d"> d) foggy</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q13_2" value="a"> a) better</label>
+    <label class="choice-radio"><input type="radio" name="q13_2" value="b"> b) angry</label>
+    <label class="choice-radio"><input type="radio" name="q13_2" value="c"> c) noisy</label>
+    <label class="choice-radio"><input type="radio" name="q13_2" value="d"> d) lost</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q13_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q13_3" value="b"> b) shout</label>
+    <label class="choice-radio"><input type="radio" name="q13_3" value="c"> c) dig</label>
+    <label class="choice-radio"><input type="radio" name="q13_3" value="d"> d) explode</label>
+
+    <button class="submit-btn" onclick="submitConversation(13)">SUBMIT</button>
+    <div id="result-13" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 14 -->
+  <div class="card" id="card-14">
+    <div class="title">🌫 Conversation 14 — Misty Morning</div>
+    <div class="conversation">
+A: This morning is misty. I can see a little fog but not too ___(1)___.<br>
+B: Yes, it's light fog.<br>
+A: Do you like misty mornings?<br>
+B: A little. The air feels ___(2)___.<br>
+A: True. What do you do on misty mornings?<br>
+B: I usually ___(3)___ slowly.<br>
+A: That’s a good idea.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q14_1" value="a"> a) loud</label>
+    <label class="choice-radio"><input type="radio" name="q14_1" value="b"> b) thick</label>
+    <label class="choice-radio"><input type="radio" name="q14_1" value="c"> c) purple</label>
+    <label class="choice-radio"><input type="radio" name="q14_1" value="d"> d) spicy</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q14_2" value="a"> a) soft</label>
+    <label class="choice-radio"><input type="radio" name="q14_2" value="b"> b) tall</label>
+    <label class="choice-radio"><input type="radio" name="q14_2" value="c"> c) sharp</label>
+    <label class="choice-radio"><input type="radio" name="q14_2" value="d"> d) angry</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q14_3" value="a"> a) walk</label>
+    <label class="choice-radio"><input type="radio" name="q14_3" value="b"> b) jump</label>
+    <label class="choice-radio"><input type="radio" name="q14_3" value="c"> c) scream</label>
+    <label class="choice-radio"><input type="radio" name="q14_3" value="d"> d) run away</label>
+
+    <button class="submit-btn" onclick="submitConversation(14)">SUBMIT</button>
+    <div id="result-14" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 15 -->
+  <div class="card" id="card-15">
+    <div class="title">☁️ Conversation 15 — Overcast Day</div>
+    <div class="conversation">
+A: The sky is overcast. It’s completely ___(1)___.<br>
+B: Yes, no sunshine today.<br>
+A: Do you like overcast days?<br>
+B: Not really. They make me feel ___(2)___.<br>
+A: I understand. What do you usually do?<br>
+B: I ___(3)___ in my room and relax.<br>
+A: That sounds nice.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q15_1" value="a"> a) blue</label>
+    <label class="choice-radio"><input type="radio" name="q15_1" value="b"> b) gray</label>
+    <label class="choice-radio"><input type="radio" name="q15_1" value="c"> c) yellow</label>
+    <label class="choice-radio"><input type="radio" name="q15_1" value="d"> d) orange</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q15_2" value="a"> a) sleepy</label>
+    <label class="choice-radio"><input type="radio" name="q15_2" value="b"> b) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q15_2" value="c"> c) loud</label>
+    <label class="choice-radio"><input type="radio" name="q15_2" value="d"> d) bright</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q15_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q15_3" value="b"> b) fly</label>
+    <label class="choice-radio"><input type="radio" name="q15_3" value="c"> c) fight</label>
+    <label class="choice-radio"><input type="radio" name="q15_3" value="d"> d) jump</label>
+
+    <button class="submit-btn" onclick="submitConversation(15)">SUBMIT</button>
+    <div id="result-15" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 16 -->
+  <div class="card" id="card-16">
+    <div class="title">🔥 Conversation 16 — Very Hot Weather</div>
+    <div class="conversation">
+A: It's extremely hot today. The temperature is ___(1)___ degrees.<br>
+B: Wow! That's really hot.<br>
+A: Do you drink a lot of water?<br>
+B: Yes, I always ___(2)___ water on hot days.<br>
+A: I also stay in the shade.<br>
+B: Good idea. It helps you feel ___(3)___.<br>
+A: Yes, much better.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q16_1" value="a"> a) zero</label>
+    <label class="choice-radio"><input type="radio" name="q16_1" value="b"> b) seven</label>
+    <label class="choice-radio"><input type="radio" name="q16_1" value="c"> c) nine</label>
+    <label class="choice-radio"><input type="radio" name="q16_1" value="d"> d) forty</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q16_2" value="a"> a) drink</label>
+    <label class="choice-radio"><input type="radio" name="q16_2" value="b"> b) kick</label>
+    <label class="choice-radio"><input type="radio" name="q16_2" value="c"> c) break</label>
+    <label class="choice-radio"><input type="radio" name="q16_2" value="d"> d) scream</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q16_3" value="a"> a) better</label>
+    <label class="choice-radio"><input type="radio" name="q16_3" value="b"> b) purple</label>
+    <label class="choice-radio"><input type="radio" name="q16_3" value="c"> c) lost</label>
+    <label class="choice-radio"><input type="radio" name="q16_3" value="d"> d) angry</label>
+
+    <button class="submit-btn" onclick="submitConversation(16)">SUBMIT</button>
+    <div id="result-16" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 17 -->
+  <div class="card" id="card-17">
+    <div class="title">❄️ Conversation 17 — Freezing Cold</div>
+    <div class="conversation">
+A: It’s freezing today. The temperature is below ___(1)___.<br>
+B: That’s really cold.<br>
+A: I wear two jackets.<br>
+B: I usually drink something warm.<br>
+A: Yes, hot tea makes me feel ___(2)___.<br>
+B: Same. What do you usually do on freezing days?<br>
+A: I ___(3)___ at home.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q17_1" value="a"> a) zero</label>
+    <label class="choice-radio"><input type="radio" name="q17_1" value="b"> b) forty</label>
+    <label class="choice-radio"><input type="radio" name="q17_1" value="c"> c) ninety</label>
+    <label class="choice-radio"><input type="radio" name="q17_1" value="d"> d) one hundred</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q17_2" value="a"> a) warm</label>
+    <label class="choice-radio"><input type="radio" name="q17_2" value="b"> b) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q17_2" value="c"> c) deep</label>
+    <label class="choice-radio"><input type="radio" name="q17_2" value="d"> d) sharp</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q17_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q17_3" value="b"> b) run away</label>
+    <label class="choice-radio"><input type="radio" name="q17_3" value="c"> c) scream</label>
+    <label class="choice-radio"><input type="radio" name="q17_3" value="d"> d) fly outside</label>
+
+    <button class="submit-btn" onclick="submitConversation(17)">SUBMIT</button>
+    <div id="result-17" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 18 -->
+  <div class="card" id="card-18">
+    <div class="title">🌬 Conversation 18 — Strong Wind</div>
+    <div class="conversation">
+A: The wind is very strong today. It’s blowing ___(1)___.<br>
+B: Yes, my hat almost flew away!<br>
+A: Do you walk outside in strong wind?<br>
+B: No, I stay inside.<br>
+A: The wind makes it hard to ___(2)___.<br>
+B: True. What do you do on windy days?<br>
+A: I usually ___(3)___ with my family.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q18_1" value="a"> a) hard</label>
+    <label class="choice-radio"><input type="radio" name="q18_1" value="b"> b) sweet</label>
+    <label class="choice-radio"><input type="radio" name="q18_1" value="c"> c) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q18_1" value="d"> d) purple</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q18_2" value="a"> a) walk</label>
+    <label class="choice-radio"><input type="radio" name="q18_2" value="b"> b) cook</label>
+    <label class="choice-radio"><input type="radio" name="q18_2" value="c"> c) scream</label>
+    <label class="choice-radio"><input type="radio" name="q18_2" value="d"> d) sleep</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q18_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q18_3" value="b"> b) fly</label>
+    <label class="choice-radio"><input type="radio" name="q18_3" value="c"> c) break glass</label>
+    <label class="choice-radio"><input type="radio" name="q18_3" value="d"> d) explode</label>
+
+    <button class="submit-btn" onclick="submitConversation(18)">SUBMIT</button>
+    <div id="result-18" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 19 -->
+  <div class="card" id="card-19">
+    <div class="title">🌦 Conversation 19 — Rain Coming</div>
+    <div class="conversation">
+A: The clouds are dark. I think it's going to ___(1)___.<br>
+B: Yes, it looks like heavy rain.<br>
+A: Do you bring an umbrella?<br>
+B: Always. Rainy days make me feel ___(2)___.<br>
+A: Really? I feel sleepy.<br>
+B: What do you usually do when it rains?<br>
+A: I ___(3)___ inside.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q19_1" value="a"> a) rain</label>
+    <label class="choice-radio"><input type="radio" name="q19_1" value="b"> b) cook</label>
+    <label class="choice-radio"><input type="radio" name="q19_1" value="c"> c) shout</label>
+    <label class="choice-radio"><input type="radio" name="q19_1" value="d"> d) jump</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q19_2" value="a"> a) calm</label>
+    <label class="choice-radio"><input type="radio" name="q19_2" value="b"> b) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q19_2" value="c"> c) hard</label>
+    <label class="choice-radio"><input type="radio" name="q19_2" value="d"> d) purple</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q19_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q19_3" value="b"> b) explode</label>
+    <label class="choice-radio"><input type="radio" name="q19_3" value="c"> c) fly</label>
+    <label class="choice-radio"><input type="radio" name="q19_3" value="d"> d) run outside</label>
+
+    <button class="submit-btn" onclick="submitConversation(19)">SUBMIT</button>
+    <div id="result-19" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 20 -->
+  <div class="card" id="card-20">
+    <div class="title">🌤 Conversation 20 — Cool Day</div>
+    <div class="conversation">
+A: Today the weather is cool. It feels ___(1)___ outside.<br>
+B: Yes, not too hot and not too cold.<br>
+A: Do you like cool weather?<br>
+B: Yes, I love it.<br>
+A: What do you usually do on cool days?<br>
+B: I ___(2)___ outside with my friends.<br>
+A: Nice! I usually feel ___(3)___ on cool days.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q20_1" value="a"> a) comfortable</label>
+    <label class="choice-radio"><input type="radio" name="q20_1" value="b"> b) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q20_1" value="c"> c) loud</label>
+    <label class="choice-radio"><input type="radio" name="q20_1" value="d"> d) lost</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q20_2" value="a"> a) play</label>
+    <label class="choice-radio"><input type="radio" name="q20_2" value="b"> b) scream</label>
+    <label class="choice-radio"><input type="radio" name="q20_2" value="c"> c) break</label>
+    <label class="choice-radio"><input type="radio" name="q20_2" value="d"> d) fall</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q20_3" value="a"> a) good</label>
+    <label class="choice-radio"><input type="radio" name="q20_3" value="b"> b) purple</label>
+    <label class="choice-radio"><input type="radio" name="q20_3" value="c"> c) angry</label>
+    <label class="choice-radio"><input type="radio" name="q20_3" value="d"> d) rough</label>
+
+    <button class="submit-btn" onclick="submitConversation(20)">SUBMIT</button>
+    <div id="result-20" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 21 -->
+  <div class="card" id="card-21">
+    <div class="title">🌫 Conversation 21 — Very Foggy</div>
+    <div class="conversation">
+A: The fog is very thick today. I can barely ___(1)___.<br>
+B: Yes, the visibility is very low.<br>
+A: Do you walk to school on foggy days?<br>
+B: Not really. It feels unsafe.<br>
+A: True. The road looks ___(2)___.<br>
+B: What do you usually do then?<br>
+A: I ___(3)___ until the fog gets better.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q21_1" value="a"> a) see</label>
+    <label class="choice-radio"><input type="radio" name="q21_1" value="b"> b) taste</label>
+    <label class="choice-radio"><input type="radio" name="q21_1" value="c"> c) hear</label>
+    <label class="choice-radio"><input type="radio" name="q21_1" value="d"> d) jump</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q21_2" value="a"> a) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q21_2" value="b"> b) dangerous</label>
+    <label class="choice-radio"><input type="radio" name="q21_2" value="c"> c) empty</label>
+    <label class="choice-radio"><input type="radio" name="q21_2" value="d"> d) loud</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q21_3" value="a"> a) wait</label>
+    <label class="choice-radio"><input type="radio" name="q21_3" value="b"> b) scream</label>
+    <label class="choice-radio"><input type="radio" name="q21_3" value="c"> c) swim</label>
+    <label class="choice-radio"><input type="radio" name="q21_3" value="d"> d) jump high</label>
+
+    <button class="submit-btn" onclick="submitConversation(21)">SUBMIT</button>
+    <div id="result-21" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 22 -->
+  <div class="card" id="card-22">
+    <div class="title">⚡ Conversation 22 — Thunderstorm</div>
+    <div class="conversation">
+A: There’s a thunderstorm coming. The sky is ___(1)___.<br>
+B: Yes, and the thunder is loud.<br>
+A: Do you get scared of storms?<br>
+B: A little bit.<br>
+A: I usually ___(2)___ inside when it storms.<br>
+B: Same here.<br>
+A: Stormy weather makes me feel ___(3)___.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q22_1" value="a"> a) dark</label>
+    <label class="choice-radio"><input type="radio" name="q22_1" value="b"> b) yellow</label>
+    <label class="choice-radio"><input type="radio" name="q22_1" value="c"> c) white</label>
+    <label class="choice-radio"><input type="radio" name="q22_1" value="d"> d) blue</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q22_2" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q22_2" value="b"> b) fly</label>
+    <label class="choice-radio"><input type="radio" name="q22_2" value="c"> c) shout</label>
+    <label class="choice-radio"><input type="radio" name="q22_2" value="d"> d) jump</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q22_3" value="a"> a) hungry</label>
+    <label class="choice-radio"><input type="radio" name="q22_3" value="b"> b) nervous</label>
+    <label class="choice-radio"><input type="radio" name="q22_3" value="c"> c) loud</label>
+    <label class="choice-radio"><input type="radio" name="q22_3" value="d"> d) strong</label>
+
+    <button class="submit-btn" onclick="submitConversation(22)">SUBMIT</button>
+    <div id="result-22" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 23 -->
+  <div class="card" id="card-23">
+    <div class="title">🌥 Conversation 23 — Partly Cloudy</div>
+    <div class="conversation">
+A: The weather is partly cloudy today. The sky is half ___(1)___.<br>
+B: Yes, I can still see some sunshine.<br>
+A: Do you like partly cloudy days?<br>
+B: Yes, they feel comfortable.<br>
+A: I usually ___(2)___ when it's like this.<br>
+B: Nice! What about you?<br>
+A: I feel ___(3)___ on days like this.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q23_1" value="a"> a) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q23_1" value="b"> b) cloudy</label>
+    <label class="choice-radio"><input type="radio" name="q23_1" value="c"> c) purple</label>
+    <label class="choice-radio"><input type="radio" name="q23_1" value="d"> d) red</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q23_2" value="a"> a) relax</label>
+    <label class="choice-radio"><input type="radio" name="q23_2" value="b"> b) fight</label>
+    <label class="choice-radio"><input type="radio" name="q23_2" value="c"> c) jump</label>
+    <label class="choice-radio"><input type="radio" name="q23_2" value="d"> d) explode</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q23_3" value="a"> a) calm</label>
+    <label class="choice-radio"><input type="radio" name="q23_3" value="b"> b) hot</label>
+    <label class="choice-radio"><input type="radio" name="q23_3" value="c"> c) angry</label>
+    <label class="choice-radio"><input type="radio" name="q23_3" value="d"> d) confused</label>
+
+    <button class="submit-btn" onclick="submitConversation(23)">SUBMIT</button>
+    <div id="result-23" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 24 -->
+  <div class="card" id="card-24">
+    <div class="title">🌡 Conversation 24 — Warm Day</div>
+    <div class="conversation">
+A: Today is warm. It’s not hot, not cold — just ___(1)___.<br>
+B: I love warm weather.<br>
+A: Do you go outside on warm days?<br>
+B: Yes, I usually ___(2)___ with friends.<br>
+A: That sounds fun.<br>
+B: Warm weather makes me feel ___(3)___.<br>
+A: Me too.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q24_1" value="a"> a) perfect</label>
+    <label class="choice-radio"><input type="radio" name="q24_1" value="b"> b) sharp</label>
+    <label class="choice-radio"><input type="radio" name="q24_1" value="c"> c) deep</label>
+    <label class="choice-radio"><input type="radio" name="q24_1" value="d"> d) purple</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q24_2" value="a"> a) play</label>
+    <label class="choice-radio"><input type="radio" name="q24_2" value="b"> b) shout</label>
+    <label class="choice-radio"><input type="radio" name="q24_2" value="c"> c) break</label>
+    <label class="choice-radio"><input type="radio" name="q24_2" value="d"> d) hide</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q24_3" value="a"> a) happy</label>
+    <label class="choice-radio"><input type="radio" name="q24_3" value="b"> b) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q24_3" value="c"> c) angry</label>
+    <label class="choice-radio"><input type="radio" name="q24_3" value="d"> d) loud</label>
+
+    <button class="submit-btn" onclick="submitConversation(24)">SUBMIT</button>
+    <div id="result-24" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 25 -->
+  <div class="card" id="card-25">
+    <div class="title">🌦 Conversation 25 — Sudden Rain</div>
+    <div class="conversation">
+A: The weather was sunny, but suddenly it ___(1)___.<br>
+B: Yes! The rain came out of nowhere.<br>
+A: Do you like sudden rain?<br>
+B: Not really. It makes my clothes ___(2)___.<br>
+A: True. What do you do when it rains suddenly?<br>
+B: I usually ___(3)___ inside a shop.<br>
+A: Smart move.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q25_1" value="a"> a) rained</label>
+    <label class="choice-radio"><input type="radio" name="q25_1" value="b"> b) cooked</label>
+    <label class="choice-radio"><input type="radio" name="q25_1" value="c"> c) shouted</label>
+    <label class="choice-radio"><input type="radio" name="q25_1" value="d"> d) jumped</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q25_2" value="a"> a) sunny</label>
+    <label class="choice-radio"><input type="radio" name="q25_2" value="b"> b) bright</label>
+    <label class="choice-radio"><input type="radio" name="q25_2" value="c"> c) wet</label>
+    <label class="choice-radio"><input type="radio" name="q25_2" value="d"> d) deep</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q25_3" value="a"> a) wait</label>
+    <label class="choice-radio"><input type="radio" name="q25_3" value="b"> b) fly</label>
+    <label class="choice-radio"><input type="radio" name="q25_3" value="c"> c) break</label>
+    <label class="choice-radio"><input type="radio" name="q25_3" value="d"> d) scream</label>
+
+    <button class="submit-btn" onclick="submitConversation(25)">SUBMIT</button>
+    <div id="result-25" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 26 -->
+  <div class="card" id="card-26">
+    <div class="title">🌙 Conversation 26 — Cold Night</div>
+    <div class="conversation">
+A: Tonight is very cold. The wind feels ___(1)___.<br>
+B: Yes, I can feel it even inside my house.<br>
+A: Do you sleep early on cold nights?<br>
+B: Yes, I like warm blankets.<br>
+A: Warm blankets make me feel ___(2)___.<br>
+B: Same! What do you usually do before bed?<br>
+A: I ___(3)___ some hot milk.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q26_1" value="a"> a) sharp</label>
+    <label class="choice-radio"><input type="radio" name="q26_1" value="b"> b) purple</label>
+    <label class="choice-radio"><input type="radio" name="q26_1" value="c"> c) angry</label>
+    <label class="choice-radio"><input type="radio" name="q26_1" value="d"> d) sweet</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q26_2" value="a"> a) cozy</label>
+    <label class="choice-radio"><input type="radio" name="q26_2" value="b"> b) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q26_2" value="c"> c) loud</label>
+    <label class="choice-radio"><input type="radio" name="q26_2" value="d"> d) deep</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q26_3" value="a"> a) drink</label>
+    <label class="choice-radio"><input type="radio" name="q26_3" value="b"> b) fly</label>
+    <label class="choice-radio"><input type="radio" name="q26_3" value="c"> c) jump</label>
+    <label class="choice-radio"><input type="radio" name="q26_3" value="d"> d) shout</label>
+
+    <button class="submit-btn" onclick="submitConversation(26)">SUBMIT</button>
+    <div id="result-26" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 27 -->
+  <div class="card" id="card-27">
+    <div class="title">🌤 Conversation 27 — Sunny Morning</div>
+    <div class="conversation">
+A: This morning is sunny. The sun looks ___(1)___.<br>
+B: Yes, it makes everything bright.<br>
+A: Do you wake up early on sunny mornings?<br>
+B: Usually, yes.<br>
+A: I like sunny mornings because they make me feel ___(2)___.<br>
+B: Nice! What do you usually do?<br>
+A: I ___(3)___ outside for exercise.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q27_1" value="a"> a) golden</label>
+    <label class="choice-radio"><input type="radio" name="q27_1" value="b"> b) purple</label>
+    <label class="choice-radio"><input type="radio" name="q27_1" value="c"> c) loud</label>
+    <label class="choice-radio"><input type="radio" name="q27_1" value="d"> d) spicy</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q27_2" value="a"> a) happy</label>
+    <label class="choice-radio"><input type="radio" name="q27_2" value="b"> b) deep</label>
+    <label class="choice-radio"><input type="radio" name="q27_2" value="c"> c) broken</label>
+    <label class="choice-radio"><input type="radio" name="q27_2" value="d"> d) lost</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q27_3" value="a"> a) walk</label>
+    <label class="choice-radio"><input type="radio" name="q27_3" value="b"> b) explode</label>
+    <label class="choice-radio"><input type="radio" name="q27_3" value="c"> c) scream</label>
+    <label class="choice-radio"><input type="radio" name="q27_3" value="d"> d) hide</label>
+
+    <button class="submit-btn" onclick="submitConversation(27)">SUBMIT</button>
+    <div id="result-27" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 28 -->
+  <div class="card" id="card-28">
+    <div class="title">🌫 Conversation 28 — Early Fog</div>
+    <div class="conversation">
+A: The fog is very light today. I can ___(1)___ the road clearly.<br>
+B: Yes, much better than yesterday.<br>
+A: Do you like foggy mornings?<br>
+B: A little.<br>
+A: The air feels soft and ___(2)___.<br>
+B: True. What do you do on foggy days?<br>
+A: I usually ___(3)___ at home.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q28_1" value="a"> a) see</label>
+    <label class="choice-radio"><input type="radio" name="q28_1" value="b"> b) shout</label>
+    <label class="choice-radio"><input type="radio" name="q28_1" value="c"> c) hear</label>
+    <label class="choice-radio"><input type="radio" name="q28_1" value="d"> d) jump</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q28_2" value="a"> a) cool</label>
+    <label class="choice-radio"><input type="radio" name="q28_2" value="b"> b) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q28_2" value="c"> c) broken</label>
+    <label class="choice-radio"><input type="radio" name="q28_2" value="d"> d) loud</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q28_3" value="a"> a) relax</label>
+    <label class="choice-radio"><input type="radio" name="q28_3" value="b"> b) explode</label>
+    <label class="choice-radio"><input type="radio" name="q28_3" value="c"> c) run away</label>
+    <label class="choice-radio"><input type="radio" name="q28_3" value="d"> d) scream</label>
+
+    <button class="submit-btn" onclick="submitConversation(28)">SUBMIT</button>
+    <div id="result-28" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 29 -->
+  <div class="card" id="card-29">
+    <div class="title">🌧 Conversation 29 — Light Shower</div>
+    <div class="conversation">
+A: It's raining lightly. The rain feels ___(1)___.<br>
+B: Yes, not too heavy.<br>
+A: Do you walk in light showers?<br>
+B: Yes, sometimes.<br>
+A: I like light showers because they make the air ___(2)___.<br>
+B: Same! What do you do today?<br>
+A: I ___(3)___ to school slowly.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q29_1" value="a"> a) soft</label>
+    <label class="choice-radio"><input type="radio" name="q29_1" value="b"> b) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q29_1" value="c"> c) sharp</label>
+    <label class="choice-radio"><input type="radio" name="q29_1" value="d"> d) loud</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q29_2" value="a"> a) fresh</label>
+    <label class="choice-radio"><input type="radio" name="q29_2" value="b"> b) angry</label>
+    <label class="choice-radio"><input type="radio" name="q29_2" value="c"> c) deep</label>
+    <label class="choice-radio"><input type="radio" name="q29_2" value="d"> d) purple</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q29_3" value="a"> a) walk</label>
+    <label class="choice-radio"><input type="radio" name="q29_3" value="b"> b) jump</label>
+    <label class="choice-radio"><input type="radio" name="q29_3" value="c"> c) fly</label>
+    <label class="choice-radio"><input type="radio" name="q29_3" value="d"> d) shout</label>
+
+    <button class="submit-btn" onclick="submitConversation(29)">SUBMIT</button>
+    <div id="result-29" class="result-box"></div>
+  </div>
+
+  <!-- CONVERSATION 30 -->
+  <div class="card" id="card-30">
+    <div class="title">⛅ Conversation 30 — Mixed Weather</div>
+    <div class="conversation">
+A: The weather keeps changing. Sometimes sunny, sometimes ___(1)___.<br>
+B: Yes, today is strange.<br>
+A: Do you like mixed weather?<br>
+B: Not really. It makes me feel ___(2)___.<br>
+A: Same. What do you do on days like this?<br>
+B: I usually ___(3)___ inside.<br>
+A: Good idea.
+    </div>
+
+    <div class="question">(1)</div>
+    <label class="choice-radio"><input type="radio" name="q30_1" value="a"> a) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q30_1" value="b"> b) warm</label>
+    <label class="choice-radio"><input type="radio" name="q30_1" value="c"> c) cloudy</label>
+    <label class="choice-radio"><input type="radio" name="q30_1" value="d"> d) purple</label>
+
+    <div class="question">(2)</div>
+    <label class="choice-radio"><input type="radio" name="q30_2" value="a"> a) loud</label>
+    <label class="choice-radio"><input type="radio" name="q30_2" value="b"> b) confused</label>
+    <label class="choice-radio"><input type="radio" name="q30_2" value="c"> c) spicy</label>
+    <label class="choice-radio"><input type="radio" name="q30_2" value="d"> d) melting</label>
+
+    <div class="question">(3)</div>
+    <label class="choice-radio"><input type="radio" name="q30_3" value="a"> a) stay</label>
+    <label class="choice-radio"><input type="radio" name="q30_3" value="b"> b) shout</label>
+    <label class="choice-radio"><input type="radio" name="q30_3" value="c"> c) jump</label>
+    <label class="choice-radio"><input type="radio" name="q30_3" value="d"> d) explode</label>
+
+    <button class="submit-btn" onclick="submitConversation(30)">SUBMIT</button>
+    <div id="result-30" class="result-box"></div>
+  </div>
+
+  </section>
+  <!-- /QUIZ -->
+
+</div>
+
+<script>
+  // Correct answers mapping: for each conversation n -> array of three correct letters
+  const correctAnswers = {
+    1: ["a","a","a"],
+    2: ["a","a","a"],
+    3: ["c","b","a"],
+    4: ["a","a","a"],
+    5: ["a","a","a"],
+    6: ["b","a"],
+    7: ["a","b","a"],
+    8: ["a","a","a"],
+    9: ["a","a","a"],
+    10:["a","a","a"],
+    11:["a","a","a"],
+    12:["a","a","a"],
+    13:["a","a","a"],
+    14:["b","a","a"],
+    15:["b","a","a"],
+    16:["d","a","a"],
+    17:["a","a","a"],
+    18:["a","a","a"],
+    19:["a","a","a"],
+    20:["a","a","a"],
+    21:["a","b","a"],
+    22:["a","a","b"],
+    23:["b","a","a"],
+    24:["a","a","a"],
+    25:["a","c","a"],
+    26:["a","a","a"],
+    27:["a","a","a"],
+    28:["a","a","a"],
+    29:["a","a","a"],
+    30:["c","b","a"]
+  };
+
+  function submitConversation(n){
+    const resBox = document.getElementById("result-"+n);
+    // For qn_1..qn_3
+    const keys = [1,2,3];
+    let total = 0;
+    let checkedAny = false;
+    let messages = [];
+
+    for(let i=0;i<3;i++){
+      const qName = "q"+n+"_"+(i+1);
+      const sel = document.querySelector('input[name="'+qName+'"]:checked');
+      const correct = correctAnswers[n] && correctAnswers[n][i];
+      if(!sel){
+        messages.push("ข้อ "+(i+1)+": ยังไม่ได้เลือก");
+        continue;
+      }
+      checkedAny = true;
+      const val = sel.value;
+      if(!correct){
+        // fallback if correctAnswers missing (should not happen)
+        messages.push("ข้อ "+(i+1)+": ไม่มีเฉลย");
+      } else if(val === correct){
+        messages.push("ข้อ "+(i+1)+": ✅ ถูกต้อง");
+        total++;
+      } else {
+        messages.push("ข้อ "+(i+1)+": ❌ ผิด (คำตอบที่ถูกคือ '"+correct+"')");
+      }
+    }
+
+    if(!checkedAny){
+      resBox.innerHTML = "❗ กรุณาเลือกคำตอบอย่างน้อย 1 ข้อแล้วกด SUBMIT";
+      resBox.style.color = "orange";
+      return;
+    }
+
+    // Disable all radios in this card to prevent change after submit
+    const radios = document.querySelectorAll('#card-'+n+' input[type="radio"]');
+    radios.forEach(r=> r.disabled = true);
+
+    // Disable submit button
+    const btn = document.querySelector('#card-'+n+' .submit-btn');
+    if(btn) btn.disabled = true;
+
+    // Show messages and score
+    resBox.innerHTML = messages.join("<br>") + "<br><strong>คะแนนจากบทนี้: "+ total + " / 3</strong>";
+    resBox.style.color = "#000";
+  }
+
+  function showTab(id, btn){
+    document.getElementById("lesson").style.display = "none";
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById(id).style.display = "block";
+
+    const tabs = document.querySelectorAll(".menu-btn");
+    tabs.forEach(t=> t.classList.remove("active"));
+    btn.classList.add("active");
+
+    // Scroll top when tab changed for mobile
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  // optional: show lesson initially (already set). Ensure quiz hidden.
+  document.getElementById("lesson").style.display = "block";
+  document.getElementById("quiz").style.display = "none";
+</script>
+
+</body>
+</html>
